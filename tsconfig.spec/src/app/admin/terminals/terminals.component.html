@@ -1,0 +1,215 @@
+<div class="newTerminal">
+
+    <!-- Add new Terminal Form -->
+    <div class="container newTerminalForm" *ngIf="addTerminalClick">
+        <!-- <div class="container newTerminalForm"> -->
+        <div style="margin-bottom: 20px;border-bottom:1px solid black">
+            <h2 style="text-align: center;">New Terminal</h2>
+        </div>
+        <form class="form-horizontal" [formGroup]="terminalForm">
+            <div class="input-group">
+                <label for="terminalId" class="col-sm-5 control-label">Terminal Id</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Terminal Id" class="form-control" formControlName="terminalId">
+                    <p *ngIf="terminalForm.controls['terminalId'].dirty && 
+                    terminalForm.controls['terminalId'].errors" class="text-danger">
+                        Terminal Id is required, should be minimum of 1 characters and maximum of 20 characters.
+                    </p>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="terminalName" class="col-sm-5 control-label">Terminal Name</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Terminal Name" class="form-control" formControlName="terminalName">
+                    <p *ngIf="terminalForm.controls['terminalName'].dirty && 
+                    terminalForm.controls['terminalName'].errors" class="text-danger">
+                        Terminal Name is required, should be minimum of 3 characters and maximum of 20 characters.
+                    </p>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="country" class="col-sm-5 control-label">Country</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Country" class="form-control" formControlName="country">
+                    <p *ngIf="terminalForm.controls['country'].dirty && 
+                    terminalForm.controls['country'].errors" class="text-danger">
+                        Country Name is required, should be minimum of 3 characters and maximum of 20 characters.
+                    </p>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="itemType" class="col-sm-5 control-label">Item Type</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Item Type" class="form-control" formControlName="itemType">
+                    <p *ngIf="terminalForm.controls['itemType'].dirty && 
+                    terminalForm.controls['itemType'].errors" class="text-danger">
+                        Item type is required, should be minimum of 4 characters and maximum of 30 characters.
+                    </p>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="terminalDescription" class="col-sm-5 control-label">Terminal Description</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Terminal Description" class="form-control"
+                        formControlName="terminalDescription">
+                    <p *ngIf="terminalForm.controls['terminalDescription'].dirty && 
+                        terminalForm.controls['terminalDescription'].errors" class="text-danger">
+                        Terminal Description is required, should be maximum of 25 characters and should contain a number
+                        followed by a hyphen. Ex. T2-phone
+                    </p>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="capacity" class="col-sm-5 control-label">Capacity</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Capacity" class="form-control" formControlName="capacity">
+                    <p *ngIf="terminalForm.controls['capacity'].dirty && 
+                        terminalForm.controls['capacity'].errors" class="text-danger">
+                        Terminal Capacity should be an Integer with maximum of size 99999.
+                    </p>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="capacity" class="col-sm-5 control-label">Available Capacity</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Available Capacity" class="form-control" formControlName="availableCapacity">
+                    <p *ngIf="terminalForm.controls['availableCapacity'].dirty && 
+                        terminalForm.controls['availableCapacity'].errors" class="text-danger">
+                        Terminal Available Capacity should be an Integer with maximum of size 99999.
+                    </p>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="status" class="col-sm-5 control-label">Status</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Status" class="form-control" formControlName="status">
+                    <p *ngIf="terminalForm.controls['status'].dirty && 
+                        terminalForm.controls['status'].errors" class="text-danger">
+                        Terminal Status should be either "Available" or "NotAvailable".
+                    </p>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="harbourLocation" class="col-sm-5 control-label">Harbour Location</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Harbour Location" class="form-control"
+                        formControlName="harbourLocation">
+                    <p *ngIf="terminalForm.controls['harbourLocation'].dirty && 
+                        terminalForm.controls['harbourLocation'].errors" class="text-danger">
+                        Harbor Location is required, should be minimum of 5 characters and maximum of 25 characters.
+                    </p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-basic cancelButton" (click)="cancelAdd()">Cancel</button>
+            <button type="submit" class="btn btn-primary updateButton" [disabled]="!terminalForm.valid"
+                (click)="insertNewTerminal()">Add</button>
+        </form>
+        <br /><br /><br />
+        <p *ngIf="errorMessage" class="text-danger">{{errorMessage}}</p>
+    </div>
+
+    <!--List of Terminals table-->
+    <div class="card card-container" *ngIf="!addTerminalClick && !updateTerminalClick">
+        <!-- <div class="card card-container" > -->
+        <h2 (click)="addTerminal()">Terminal
+            <a>
+                <button class="btn btn-outline-primary floatRight">Add Terminal</button>
+            </a>
+        </h2>
+        <div class="input-group inputSearchGroup">
+            <input type="text" class="form-control" placeholder="Search by Terminal Id" [(ngModel)]="filterTerminalId">
+            <div class="input-group-btn">
+                <button class="btn btn-outline-primary" type="submit" [disabled]="!filterTerminalId"
+                    (click)="getTerminalsByTerminalId(filterTerminalId)">
+                    Search
+                    <!-- <i class="glyphicon glyphicon-search"></i> -->
+                </button>
+            </div>&nbsp;
+            <input type="text" class="form-control" placeholder="Search by Item Type" [(ngModel)]="filterItemType">
+            <div class="input-group-btn">
+                <button class="btn btn-outline-primary" type="submit" [disabled]="!filterItemType"
+                    (click)="getTerminalsByItemType(filterItemType)">
+                    Search
+                    <!-- <i class="glyphicon glyphicon-search"></i> -->
+                </button>
+            </div>
+            &nbsp;
+            <div class="input-group-btn">
+                <button class="btn btn-outline-primary" type="submit" (click)="getAllTerminals()">
+                    Get All
+                    <!-- <i class="glyphicon glyphicon-search"></i> -->
+                </button>
+            </div>
+        </div>
+        <div class="error text-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+        <div *ngIf="terminalsAvailable">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Terminal Id</th>
+                        <th>Terminal Name</th>
+                        <th>Country</th>
+                        <th>Item Type</th>
+                        <th>Terminal Description</th>
+                        <th>Capacity</th>
+                        <th>Available Capacity</th>
+                        <th>Status</th>
+                        <th>Harbour Locations</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let terminal of terminalArray">
+                        <td>{{terminal.terminalId}}</td>
+                        <td>{{terminal.terminalName}}</td>
+                        <td>{{terminal.country}}</td>
+                        <td>{{terminal.itemType}}</td>
+                        <td>{{terminal.terminalDescription}}</td>
+                        <td>{{terminal.capacity}}</td>
+                        <td>{{terminal.availableCapacity}}</td>
+                        <td>{{terminal.status}}</td>
+                        <td>{{terminal.harborLocation}}</td>
+                        <td class="text-center">
+                            <a><button class="btn btn-outline-primary"
+                                    (click)="deleteTerminal(terminal.terminalId)">Delete</button></a><br><br>
+                            <a><button class="btn btn-outline-primary"
+                                    (click)="updateTerminalRequest(terminal.terminalId)">Update</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Update Terminal Form-->
+    <div *ngIf="updateTerminalClick">
+        <!-- <div> -->
+        <div class="container newTerminalForm">
+            <div style="margin-bottom: 20px;border-bottom:1px solid black">
+                <h2>Update Terminal : {{terminalIdToUpdate}}</h2>
+            </div>
+            <form class="form-horizontal" [formGroup]="updateTerminalForm">
+                <div class="form-group">
+                    <label for="capacity" class="col-sm-5 control-label">Capacity to reduce</label>
+                    <div class="col-sm-7">
+                        <input type="text" placeholder="Capacity to reduce" class="form-control"
+                            formControlName="capacityToReduce">
+                        <p *ngIf="updateTerminalForm.controls['capacityToReduce'].dirty && 
+                        updateTerminalForm.controls['capacityToReduce'].errors" class="text-danger">
+                            Capacity is required!
+                        </p>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-basic cancelButton" (click)="cancelUpdate()">Cancel</button>
+                <button type="submit" class="btn btn-primary updateButton" [disabled]="!updateTerminalForm.valid"
+                    (click)="updateTerminal()">Update</button>
+            </form>
+            <br /><br /><br />
+            <p *ngIf="successMessage" class="text-success">{{successMessage}}</p>
+            <p *ngIf="errorMessage" class="text-danger">{{errorMessage}}</p>
+        </div>
+    </div>
+</div>

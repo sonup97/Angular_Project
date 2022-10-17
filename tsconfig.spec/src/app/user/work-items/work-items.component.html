@@ -1,0 +1,62 @@
+<h2>Play with Work Items</h2>
+
+<table *ngIf="!isFormInvoked">
+    <div class="iten-header-content">
+        <div class="select-field">
+            <p>Sort the list based on: </p> &nbsp;
+            <select [(ngModel)]="sortoption">
+                <option value="" [disabled]="true">Select Sort Option Field</option>
+                <option value="itemName">Item Name</option>
+                <option value="itemType">Item Type</option>
+                <option value="quantity">Quantity</option>
+                <option value="sourceCountry">Source Country</option>
+                <option value="destinationCountry">Destination Country</option>
+                <option value="originHarborLocations">Origin Harbor Location</option>
+                <option value="selectedHarborLocations">Selected Harbor Locations</option>
+                <option value="shippingDate">ShippingDate</option>
+                <option value="amount">Amount</option>
+            </select><br /><br />
+        </div>
+        <!-- <div *ngIf="!hide">
+            <button (click)="isFormInvoked=true; hide=true">Add Work Items</button>
+        </div> -->
+    </div>
+    <table border="1" id="work-items">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Item Type</th>
+                <th>Item Description</th>
+                <th>Message To Recipient</th>
+                <th>Quantity</th>
+                <th>Source Country</th>
+                <th>Destination Country</th>
+                <th>Origin Harbor Location</th>
+                <th>Selected Harbor Locations</th>
+                <th>ShippingDate</th>
+                <th>Amount</th>
+                <!-- <th>Edit work Item</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items | sort: sortoption">
+                <td>{{ item.itemName }}</td>
+                <td>{{ item.itemType }}</td>
+                <td>{{ item.itemDescription }}</td>
+                <td>{{ item.messageToRecipient }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.sourceCountry }}</td>
+                <td>{{ item.destinationCountry }}</td>
+                <td>{{ item.originHarborLocations }}</td>
+                <td>{{ item.selectedHarborLocations }}</td>
+                <td>{{ item.shippingDate }}</td>
+                <td>{{ item.amount }}</td>
+                <!-- <td><button>Edit</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+</table>
+
+<div *ngIf="isFormInvoked">
+    <app-add-items-form (registerEvent)="addItem($event)"></app-add-items-form>
+</div>

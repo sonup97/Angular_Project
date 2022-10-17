@@ -1,0 +1,41 @@
+<div class="login-container" >
+    <app-navbar></app-navbar>
+    <div class="inner-container container" >
+        <!--<img *ngIf="role === 'user'" src="../../assets/images/login.gif" alt="">
+        <img *ngIf="role === 'admin'" src="../../assets/images/admin-login.gif" alt="">-->
+        <div class="login-form-container"  >
+            <form [formGroup]="loginForm">
+                <h2 class="form-heading">{{role | titlecase}} Login</h2>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="email" placeholder="User Id"/>
+                    <div *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].dirty">
+                        <div *ngIf="loginForm.controls['email'].errors?.['required']" class="error-message">
+                            * Required field.
+                        </div>
+                    </div>
+                    <div *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].dirty">
+                        <div *ngIf="loginForm.controls['email'].errors?.['email']" class="error-message">
+                            Please enter valid Email Id.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password"/>
+                    <div *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].dirty">
+                        <div *ngIf="loginForm.controls['password'].errors?.['required']" class="error-message">
+                            * Required field.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button (click)="login()" [disabled]="loginForm.invalid" class="action-btn-black">Login</button>
+                </div>
+            </form>
+            <div *ngIf="errorMessage" class="error-message alert alert-danger">{{errorMessage}}</div>
+        </div>
+        <img *ngIf="role === 'user'" src="..\assets\images\login.webp" alt="" style="height:70vh; width:50%;">
+        <img *ngIf="role === 'admin'" src="..\assets\images\admin.webp" alt="" style="height:70vh; width:50%;">
+    </div>
+</div>

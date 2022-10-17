@@ -1,0 +1,123 @@
+.landing-container {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.intro {
+    height: calc(100vh - 50px);
+    background: url("../../assets/images/landing/ship.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-repeat: no-repeat center center;
+    background-size: cover;
+    padding: 50px;
+    flex-direction: column;
+    color: black;
+}
+
+.main-text {
+    line-height: 90px;
+    font-weight: 900;
+    color: rgb(13, 128, 163);
+    margin-bottom: 10px;
+}
+
+button {
+    height: 45px;
+    font-weight: 600;
+    margin: 10px 15px 10px 0;
+    width: 170px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.button-span {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button:hover
+{
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}
+
+#about-us {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 70px 15%;
+    text-align: center;
+    font-size: 16px;
+    scroll-margin: 100px;
+    background-color: black;
+    color: white;
+    opacity: 0.70;
+}
+
+#about-us h1 {
+    font-weight: 600;
+    font-size: 54px;
+    padding: 0 30%;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid black;
+}
+
+#services {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-margin: 100px;
+    width: 90%;
+    margin-top: 5rem;
+}
+
+#service-img {
+    background-repeat: no-repeat center center;
+    background-size: cover;
+    height: 500px;
+    width: 40%;
+    border-radius: 25px;
+}
+
+#services-details {
+    margin-left: 50px;
+    min-height: 500px;
+    width: 50%;
+}
+
+#services-details-heading {
+    font-weight: 700;
+    font-size: 50px;
+    padding: 0 20%;
+    padding-bottom: 5px; 
+    margin-bottom: 30px; 
+    color: rgba(243, 204, 29, 0.945);
+}
+
+.facility {
+    display: flex;
+    margin: 0 0 20px 50px;
+}
+
+.facility-icon {
+    margin-right: 15px;
+}

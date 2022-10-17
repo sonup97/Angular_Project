@@ -1,0 +1,42 @@
+.register-container {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: whitesmoke;
+    vertical-align: middle;
+}
+
+.inner-content
+{
+    background: white;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.form-container {
+    padding: 3% 5%;
+    vertical-align: middle;
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    margin-left: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.title {
+    padding: 0 0 10px 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid whitesmoke;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+#passportNumberInput {
+    text-transform: uppercase;
+}

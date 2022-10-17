@@ -1,0 +1,183 @@
+<div class="register-container">
+    <app-navbar></app-navbar>
+    <div class="inner-content row m-4 my-auto">
+        <div class="form-container col-md-7">
+            <form [formGroup]="registerForm">
+                <h2 class="title">User Registration</h2>
+                <div class="row justify-content-end">
+                    <div class="form-group col-md-6">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" formControlName="firstName" />
+                        <div class="col-md-6"
+                            *ngIf="registerForm.controls['firstName'].errors && registerForm.controls['firstName'].touched">
+                            <div *ngIf="registerForm.controls['firstName'].errors?.['required']" class="error-message">
+                                *Required field.
+                            </div>
+                            <div *ngIf="registerForm.controls['firstName'].errors?.['minlength']" class="error-message">
+                                First name should at least have 3 characters.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 pr-0">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastName" />
+                        <div class="col-md-6"
+                            *ngIf="registerForm.controls['lastName'].errors && registerForm.controls['lastName'].touched">
+                            <div *ngIf="registerForm.controls['lastName'].errors?.['required']" class="error-message">
+                                *Required field.
+                            </div>
+                            <div *ngIf="registerForm.controls['lastName'].errors?.['minlength']" class="error-message">
+                                Last name should at least have 3 characters.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Email ID</label>
+                        <input type="text" class="form-control col-md-8" formControlName="email" />
+                        <div class="col-md-8" *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].touched">
+                            <div *ngIf="registerForm.controls['email'].errors?.['required']" class="error-message">
+                                *Required field.
+                            </div>
+                            <div *ngIf="registerForm.controls['email'].errors?.['email']" class="error-message">
+                                Please enter valid Email Id.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Mobile Number</label>
+                        <input type="tel" class="form-control col-md-8" formControlName="mobileNumber" />
+                        <div class="col-md-8"
+                            *ngIf="registerForm.controls['mobileNumber'].errors && registerForm.controls['mobileNumber'].touched">
+                            <div *ngIf="registerForm.controls['mobileNumber'].errors?.['required']"
+                                class="error-message">
+                                *Required field.
+                            </div>
+                            <div *ngIf="registerForm.controls['mobileNumber'].errors?.['pattern']"
+                                class="error-message">
+                                Mobile no. must be 10 digit long.
+                            </div>
+                        </div>
+                    </div>
+
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Password</label>
+                        <input type="password" class="form-control col-md-8" formControlName="password" />
+                        <div class="col-md-8"
+                            *ngIf="registerForm.controls['password'].errors && registerForm.controls['password'].touched">
+                            <div *ngIf="registerForm.controls['password'].errors?.['required']" class="error-message">
+                                *Required field.
+                            </div>
+                            <div *ngIf="(registerForm.controls['password'].errors?.['minlength']
+                            || registerForm.controls['password'].errors?.['maxlength'])" class="error-message">
+                                Password should be of length 6-16 characters.
+                            </div>
+                        </div>
+                    </div>
+
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Confirm Password</label>
+                        <input type="password" class="form-control col-md-8" formControlName="confirmPassword" />
+                        <div class="col-md-8"
+                            *ngIf="registerForm.controls['confirmPassword'].errors && registerForm.controls['confirmPassword'].touched">
+                            <div *ngIf="registerForm.controls['confirmPassword'].errors?.['required']"
+                                class="error-message">
+                                *Required field.
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Nationality</label>
+                        <input type="text" class="form-control col-md-8" formControlName="nationality" />
+                        <div class="col-md-8"
+                            *ngIf="registerForm.controls['nationality'].errors && registerForm.controls['nationality'].touched">
+                            <div *ngIf="registerForm.controls['nationality'].errors?.['required']"
+                                class="error-message">
+                                *Required field.
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Passport No.</label>
+                        <input type="text" class="form-control col-md-8" formControlName="passportNumber"
+                            id="passportNumberInput" />
+                            <div class="col-md-8"
+                            *ngIf="registerForm.controls['passportNumber'].errors && registerForm.controls['passportNumber'].touched">
+                            <div *ngIf="registerForm.controls['passportNumber'].errors?.['required']"
+                                class="error-message">
+                                *Required field.
+                            </div>
+                            <div *ngIf="(registerForm.controls['passportNumber'].errors?.['minlength']
+                            || registerForm.controls['passportNumber'].errors?.['maxlength'])" class="error-message">
+                                Passport Number should be of length 7-12 characters.
+                            </div>
+                        </div>
+                    </div>
+
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Personal Identification No.</label>
+                        <input type="number" class="form-control col-md-8" formControlName="personalIdentificationNumber" />
+                        <div class="col-md-8"
+                            *ngIf="registerForm.controls['personalIdentificationNumber'].errors && registerForm.controls['personalIdentificationNumber'].touched">
+                            <div *ngIf="registerForm.controls['personalIdentificationNumber'].errors?.['required']"
+                                class="error-message">
+                                *Required field.
+                            </div>
+                            <div *ngIf="(registerForm.controls['personalIdentificationNumber'].errors?.['min']
+                            || registerForm.controls['personalIdentificationNumber'].errors?.['max'])"
+                                class="error-message">
+                                Personal Identification No. should be 12 characters long.
+                            </div>
+                        </div>
+                    </div>
+                
+
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Permanent Address</label>
+                        <textarea class="form-control col-md-8" formControlName="permanentAddress"></textarea>
+                        <div class="col-md-8"
+                            *ngIf="registerForm.controls['permanentAddress'].errors && registerForm.controls['permanentAddress'].touched">
+                            <div *ngIf="registerForm.controls['permanentAddress'].errors?.['required']"
+                                class="error-message">
+                                *Required field.
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+                    <div class="form-group row justify-content-end">
+                        <label class="col-md-4">Office Address</label>
+                        <textarea class="form-control col-md-8" formControlName="officeAddress"></textarea>
+                        <div class="col-md-8"
+                            *ngIf="registerForm.controls['officeAddress'].errors && registerForm.controls['officeAddress'].touched">
+                            <div *ngIf="registerForm.controls['officeAddress'].errors?.['required']"
+                                class="error-message">
+                                *Required field.
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="form-group text-center">
+                    <button (click)="registerVendor()" [disabled]="registerForm.invalid" class="action-btn-black">
+                        Sign up</button>
+                </div>
+            </form>
+
+            <div *ngIf="errorMessage" class="error-message alert alert-danger" [ngStyle]="{fontSize: '20px'}">
+                {{errorMessage}}</div>
+
+        </div>
+        <img class="col-md-5 m-0 p-0" src="data:image/jpeg;base64,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" alt="">
+    </div> -->
+    
+</div>

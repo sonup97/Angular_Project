@@ -1,0 +1,129 @@
+
+.footer {
+
+    position: relative;
+
+    overflow: hidden;
+
+    z-index: 25;
+
+   
+
+}
+
+a {
+    cursor: pointer;
+}
+
+.Bar {
+    color: #009bcb;
+}
+
+.footer_links_block {
+    background-color: #262626;
+    display: flex;
+    align-items: flex-start;
+    justify-content:flex-start;
+    flex-direction: column;
+    padding: 2rem 12%;
+}
+
+.link_column {
+    display: flex;
+    text-align: left;
+    vertical-align: top;
+    margin-right: 2rem;
+}
+
+.link_column ul {
+    list-style-type: none;
+    margin-inline-start: 0;
+    padding-inline-start: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link_column h4 {
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    width: 10rem;
+}
+
+.link_column li {
+    color: white;
+    line-height: 28px;
+    margin-left: 50px;
+}
+
+.link_column li a {
+    color: white;
+    font-size: 14px;
+    /* letter-spacing: 1px; */
+    transition: 0.1s;
+    /* letter-spacing: 1.2px; */
+    text-decoration: none;
+    border-left: 1px solid white;
+    padding-left: 8px;
+}
+
+.link_column li a:hover {
+    color: #e7d90f;
+    border-left: 1px solid #e7d90f;
+}
+
+.stay_connected h4{
+width: 14rem;
+}
+
+.stay_connected a{
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    height: auto;
+    width: 30px;
+    }
+
+.stay_connected img {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    height: auto;
+    width: 30px;
+}
+
+.copyright_block {
+    background-color: rgb(15, 15, 15);
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.copyright_block h6 {
+    margin: 1rem 0;
+    color: #009bcb;
+    font-size: 14px !important;
+    letter-spacing: 1.5px;
+}
+* {
+    margin: 0;
+  }
+  html, body {
+    height: 100%;
+  }
+  .page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -142px; 
+  }
+  .page-wrap:after {
+    content: "";
+    display: block;
+  }
+  .site-footer, .page-wrap:after {
+    height: 142px; 
+  }
+  .site-footer {
+    background: orange;
+  }

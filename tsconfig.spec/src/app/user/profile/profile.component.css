@@ -1,0 +1,60 @@
+.profile-container {
+    min-height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ;
+    font-family: 'Poppins', sans-serif;
+}
+
+.info {
+    width: 600px;
+    min-height: 450px;
+    padding: 50px;
+    /* border-left: 1px solid black; */
+    margin-left: 5%;
+}
+
+label {
+    font-weight: 600;
+}
+
+h3 {
+    /* width: 100%; */
+    /* text-align: center; */
+
+    font-weight: 700;
+}
+
+.profile-heading {
+    display: flex;
+    align-items: center;
+    /* font-weight: 700; */
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+table {
+    margin-top: 50px;
+    width: 100%;
+}
+
+td {
+    padding: 8px 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.field-label {
+    font-weight: 600;
+}
+
+input {
+    height: 30px;
+}
+
+.action-btn {
+    width: 150px;
+    height: 40px;
+    margin: 15px 0;
+}

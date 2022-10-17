@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a routerLink="home" class="navbar-brand brand">
+        <!-- <img class="brand-image" src="../../assets/images/ftr-logo.png" alt="" /> -->
+        <span>Freight Transport Region</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav  my-navbar-links">
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/login/user">User Login</a>
+            </li>
+
+            <li class="nav-item">
+                <!-- <a class="nav-link" (click)="scrollToService()">Services</a> -->
+                <a class="nav-link" routerLink="/login/admin">Admin Login</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/signup/user">Register</a>
+            </li>
+
+
+            <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img id="login-icon" alt="" src="../../assets//images/login.png" height="22px" />
+                    <span>Sign in</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <span class="icon-link" routerLink="/login/user">
+                        <img [ngStyle]="{marginRight: '3px'}" alt="" src="../../assets/images/usernew.png"
+                            height="28px" />
+                        Sign in as Vendor
+                    </span>
+                    <div class="dropdown-divider"></div>
+                    <span class="icon-link" routerLink="/login/admin">
+                        <img [ngStyle]="{marginRight: '3px'}" alt="" src="../../assets/images/adminnew.png"
+                            height="28px" />
+                        Sign in as Admin
+                    </span>
+                </div>
+            </li> -->
+
+            <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img id="login-icon" alt="" src="../../assets//images/register.png" height="25px" />
+                    <span>Join us</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <span class="icon-link" routerLink="/signup/user">
+                        <img [ngStyle]="{marginRight: '3px'}" alt="" src="../../assets/images/usernew.png"
+                            height="28px" />
+                        Register as Vendor
+                    </span>
+                    <div class="dropdown-divider"></div>
+                    <span class="icon-link" routerLink="/signup/admin">
+                        <img [ngStyle]="{marginRight: '3px'}" alt="" src="../../assets/images/adminnew.png"
+                            height="28px" />
+                        Register as Admin
+                    </span>
+                </div>
+            </li> -->
+
+        </ul>
+    </div>
+</nav>

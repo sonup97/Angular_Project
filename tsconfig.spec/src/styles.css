@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Poppins:wght@600&display=swap');
+
+* {
+    scroll-behavior: smooth;
+}
+
+body{
+    flex-grow: 1;
+}
+
+.action-btn {
+    height: 35px;
+    min-width: 100px;
+    background: white;
+    border: 1px solid black;
+    text-align: center;
+    transition: 0.2s;
+    color: black;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.action-btn-black {
+    height: 35px;
+    min-width: 100px;
+    background: black;
+    border: 1px solid black;
+    text-align: center;
+    transition: 0.2s;
+    color: white;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+
+}
+
+.action-btn:hover {
+    background: rgb(161, 161, 161);
+}
+
+.action-btn-black:hover {
+    background: rgb(161, 161, 161);
+}
+
+.action-btn:disabled,
+.action-btn-black:disabled {
+    background: rgb(161, 161, 161);
+    border: 1px solid rgb(161, 161, 161);
+}

@@ -1,0 +1,92 @@
+.dashboard-container {
+    /* background-image: url("../../../assets/images/cargoShip2.jpg"); */
+    min-height: calc(100vh - 50px);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* color: white; */
+}
+
+.navbar {
+    background: rgb(15, 15, 15) !important;
+    height: 50px;
+    border-radius: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.brand {
+    margin-left: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.brand span {
+    transition: 0.2s;
+}
+
+.brand span:hover {
+    color: #009bcb !important;
+}
+
+.brand-image {
+    height: 30px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+    margin-right: 5px;
+}
+
+
+.my-navbar-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 120px;
+    height: 50px;
+}
+
+.nav-link {
+    color: white !important;
+    padding: 0 15px !important;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #64b5f6 !important;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dropdown-toggle {
+    transition: 0ms !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-menu {
+    font-size: 14px !important;
+}
+
+#login-icon {
+    margin: 0 5px !important;
+}
+
+/* body{
+    background-image: url("../../assets/images/cargoShip.png");
+    height: calc(100vh - 50px);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+} */

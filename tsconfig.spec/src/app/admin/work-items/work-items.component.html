@@ -1,0 +1,272 @@
+ 
+<!--Add new work items Form-->
+<div class="container newWorkItemsForm" *ngIf="addWorkItemsClick">
+    <div style="margin-bottom: 20px;border-bottom:1px solid black">
+        <h2>New Work Items</h2>
+    </div>
+    <form class="form-horizontal" [formGroup]="addWorkItemsFormGroup">
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Item Name</label>
+            <div class="col-sm-7">
+                <input type="text" placeholder="Item Name" class="form-control" formControlName="itemName">
+                <p *ngIf="addWorkItemsFormGroup.controls.itemName.dirty && addWorkItemsFormGroup.controls.itemName.errors"
+                    class="validationError">
+                    Invalid workitem name
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Item Type</label>
+            <div class="col-sm-7">
+                <select class="form-control" formControlName="itemType">
+                    <option value="Computer Hardware">Computer Hardware</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Oil Container">Oil Container</option>
+                    <option value="Wood">Wood</option>
+                    <option value="Motorcycles">Motorcycles</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Item Description</label>
+            <div class="col-sm-7">
+                <input type="text" placeholder="Item Description" class="form-control"
+                    formControlName="itemDescription">
+                <p *ngIf="addWorkItemsFormGroup.controls.itemDescription.dirty && addWorkItemsFormGroup.controls.itemDescription.errors"
+                    class="validationError">
+                    Invalid workitem description
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Message To Recipient</label>
+            <div class="col-sm-7">
+                <input type="text" placeholder="Message To Recipient" class="form-control"
+                    formControlName="messageToRecipient">
+                <p *ngIf="addWorkItemsFormGroup.controls.messageToRecipient.dirty && addWorkItemsFormGroup.controls.messageToRecipient.errors"
+                    class="validationError">
+                    Invalid Message to recipient
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Quantity</label>
+            <div class="col-sm-7">
+                <input type="text" placeholder="Quantity" class="form-control" formControlName="quantity">
+                <p *ngIf="addWorkItemsFormGroup.controls.quantity.dirty && addWorkItemsFormGroup.controls.quantity.errors"
+                    class="validationError">
+                    Invalid quantity
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Source Country</label>
+            <div class="col-sm-7">
+                <select class="form-control" formControlName="sourceCountry">
+                    <option *ngFor="let country of countriesList" [value]="country">{{country}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Destination Country</label>
+            <div class="col-sm-7">
+                <select class="form-control" formControlName="destinationCountry"
+                    (change)="populateAvailableHarborLocations()">
+                    <option *ngFor="let country of countriesList" [value]="country">{{country}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Available Harbor Location</label>
+            <div class="col-sm-7">
+                <select class="form-control" formControlName="availableHarborLocations">
+                    <option *ngFor="let harbor of harborList" [value]="harbor">{{harbor}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Shipping Date</label>
+            <div class="col-sm-7">
+                <input type="date" class="form-control" formControlName="shippingDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-5 control-label">Amount</label>
+            <div class="col-sm-7">
+                <input type="numeric" placeholder="Amount" class="form-control" formControlName="amount">
+                <p *ngIf="addWorkItemsFormGroup.controls.amount.dirty && addWorkItemsFormGroup.controls.amount.errors"
+                    class="validationError">
+                    Invalid amount
+                </p>
+            </div>
+        </div>
+        <button type="button" class="btn btn-default cancelButton" (click)="addWorkItemsClick=false">Cancel</button>
+        <button type="submit" class="btn btn-primary updateButton" [disabled]="addWorkItemsFormGroup.invalid"
+            (click)="addWorkItems()">Add</button>
+    </form>
+</div>
+
+<!--List of work items table-->
+
+<div class="card card-container" *ngIf="!addWorkItemsClick && !updateWorkItem && !openWorkItemStatusClick">
+    <h2 (click)="addWorkItemsClick=true;populateAvailableCountries();" *ngIf="!isAdmin">Work Items<a><span
+                class="glyphicon glyphicon-plus floatRight"></span></a></h2>
+    <h2 *ngIf="isAdmin">Work Items</h2>
+    <p *ngIf="successMsg" style="color: green;">{{successMsg}}</p>
+    <p *ngIf="errorMsg" class="validationError">{{errorMsg}}</p>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>Work Item Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Message</th>
+                <th>Quantity</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Harbour</th>
+                <th>Shipping Date</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let workItem of workItemsList">
+                <td>{{workItem.userId}}</td>
+                <td class="text-info" style="cursor: pointer;" (click)="openWorkItemStatusModule(workItem)"
+                    *ngIf="isAdmin">{{workItem.workItemId}}</td>
+                <td *ngIf="!isAdmin">{{workItem.workItemId}}</td>
+                <td>{{workItem.itemName}}</td>
+                <td>{{workItem.itemType}}</td>
+                <td>{{workItem.itemDescription}}</td>
+                <td>{{workItem.messageToRecipient}}</td>
+                <td>{{workItem.quantity}}</td>
+                <td>{{workItem.sourceCountry}}</td>
+                <td>{{workItem.destinationCountry}}</td>
+                <td>{{workItem.originHarborLocations}}</td>
+                <td>{{workItem.shippingDate}}</td>
+                <td>{{workItem.amount}}</td>
+                <td class="text-center img-warpper">
+                    <img src="assets/images/edit-2-outline.svg" title="Edit WorkItem"
+                        (click)="updateWorkItem=true;populateAvailableHarborLocationsForUpdateWorkItems(workItem.workItemId, workItem.destinationCountry)"
+                        height="15px">
+
+                    <img *ngIf="isAdmin" src="assets/images/car-outline.svg" title="Allocate Vehicle"
+                        (click)="allocateVehicle(workItem.workItemId)" alt="edit icon" height="15px">
+
+                    <!-- <img  *ngIf="isAdmin" src="assets/images/file-add-outline.svg" (click)="assignTerminal(workItem.workItemId)"
+                        title="Assign Terminal" alt="edit icon" height="15px"> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container newWorkItemsForm" *ngIf="updateWorkItem">
+    <div style="margin-bottom: 20px;border-bottom:1px solid black">
+        <h2>Update Work Items</h2>
+    </div>
+    <form class="form-horizontal" [formGroup]="updateWorkItemsFormGroup">
+        <div class="form-group" *ngIf="!isAdmin">
+            <label for="phoneNumber" class="col-sm-5 control-label">Available Harbor Location</label>
+            <div class="col-sm-7">
+                <select class="form-control" formControlName="availableHarborLocations">
+                    <option *ngFor="let harbor of harborList" [value]="harbor">{{harbor}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" *ngIf="!isAdmin">
+            <label for="phoneNumber" class="col-sm-5 control-label">Shipping Date</label>
+            <div class="col-sm-7">
+                <input type="date" class="form-control" formControlName="shippingDate">
+            </div>
+        </div>
+        <div class="form-group" *ngIf="isAdmin">
+            <label for="phoneNumber" class="col-sm-5 control-label">Status</label>
+            <div class="col-sm-7">
+                <select class="form-control" formControlName="status">
+                    <option value="NotInitiated">Not Initiated</option>
+                    <option value="InProgress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-default cancelButton" (click)="updateWorkItem=false">Cancel</button>
+        <button type="submit" class="btn btn-primary updateButton" (click)="updateWorkItems()">Update</button>
+    </form>
+</div>
+
+
+<div class="container" *ngIf="openWorkItemStatusClick">
+    <div class="jumbotron" style="padding-top: 0px; padding-bottom: 0px;">
+        <div class="row">
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h3 (click)="openWorkItemStatusClick=false">Work Item Details
+                        <!-- <a *ngIf="!editProfileClick">
+                            <span class="glyphicon glyphicon-remove" style="float: right;"></span>
+                        </a> -->
+                    </h3>
+                </div>
+                <ul class="container details">
+                    <li>
+                        <p><span class="paddingRight">WorkItemId:</span>{{workItemAssociation.workItemId}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">WorkItemStatus:</span>{{workItemAssociation.workItemStatus}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">UserId:</span>{{workItemAssociation.userId}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">ItemName:</span>{{workItemAssociation.itemName}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">ItemType:</span>{{workItemAssociation.itemType}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">Country:</span>{{workItemAssociation.country}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">HarborLocation:</span>{{workItemAssociation.harborLocation}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">ShippingDate:</span>{{workItemAssociation.shippingDate}}</p>
+                    </li>
+                </ul>
+                <br>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h3>Work Item Vehicle Association Details</h3>
+                </div>
+                <ul class="container details">
+                    <li>
+                        <p><span class="paddingRight">VehicleNumber:</span>{{workItemAssociation.vehicleNumber}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">VehicleNumber:</span>{{workItemAssociation.vehicleName}}</p>
+                    </li>
+                </ul>
+                <br>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h3>Work Item Terminal Association Details</h3>
+                </div>
+                <ul class="container details">
+                    <li>
+                        <p><span class="paddingRight">terminalId:</span>{{workItemAssociation.terminalId}}</p>
+                    </li>
+                    <li>
+                        <p><span class="paddingRight">terminalName:</span>{{workItemAssociation.terminalName}}</p>
+                    </li>
+                </ul>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

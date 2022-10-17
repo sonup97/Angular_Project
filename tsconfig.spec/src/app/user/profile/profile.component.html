@@ -1,0 +1,62 @@
+<div class="profile-container">
+
+    <img src="../../../assets/images/personal-data.gif" alt="">
+
+    <div class="info ">
+        <div class="profile-heading">
+            <h3>{{user.firstName}} {{user.lastName}}</h3>
+            &nbsp;({{user.emailId}})
+        </div>
+
+        <table>
+            <tr class="row">
+                <td class="field-label col-md-5">Your FTR User Id</td>
+                <td class="field-value col-md-7">:&nbsp;{{user.userId}}</td>
+            </tr>
+
+            <tr class="row">
+                <td class="field-label col-md-5">Mobile Number</td>
+                <td class="field-value col-md-7">:&nbsp;
+                    <input type="text" #mobile class="form-control" [disabled]="!updateMode"
+                        [value]="user.mobileNumber">
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="field-label col-md-5">Nationality</td>
+                <td class="field-value col-md-7">:&nbsp;{{user.nationality}}</td>
+            </tr>
+            <tr class="row">
+                <td class="field-label col-md-5">Passport Number</td>
+                <td class="field-value col-md-7">:&nbsp;{{user.passportNumber | uppercase}}</td>
+            </tr>
+            <tr class="row">
+                <td class="field-label col-md-5">Personal Id Number</td>
+                <td class="field-value col-md-7">:&nbsp;{{user.personalIdentificationNumber}}</td>
+            </tr>
+            <tr class="row">
+                <td class="field-label col-md-5">Office Address</td>
+                <td class="field-value col-md-7">:&nbsp;
+                    <input type="text" #officeAddr class="form-control" [disabled]="!updateMode"
+                        [value]="user.officeAddress">
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="field-label col-md-5">Permanent Address</td>
+                <td class="field-value col-md-7">:&nbsp;
+                    <input type="text" #permAddr class="form-control" [disabled]="!updateMode"
+                        [value]="user.permanentAddress">
+                </td>
+            </tr>
+        </table>
+
+        <button *ngIf="!updateMode" class="btn btn-secondary" [ngStyle]="{width: '150px', marginTop: '20px'}"
+            (click)="updateModeToggle()">Edit</button>
+
+        <button *ngIf="updateMode" class="action-btn" [ngStyle]="{width: '150px', marginTop: '20px'}"
+            (click)="updateDetails(officeAddr.value, permAddr.value, mobile.value)">Update</button>
+        <br>
+        <br>
+        <div *ngIf="successMessage" class="alert alert-success">{{successMessage}}</div>
+
+    </div>
+</div>

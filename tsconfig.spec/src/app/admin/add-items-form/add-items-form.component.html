@@ -1,0 +1,86 @@
+<div class="container">
+    <h1>Add Item</h1>
+    <form [formGroup]="registerForm">
+        <div class="form-group">
+            <label>Item Name:</label>
+            <input type="text" class="form-control" formControlName="itemName" #itemName>
+            <p *ngIf="registerForm.controls['itemName'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Item Type:</label>
+            <input type="text" class="form-control" formControlName="itemType" #itemType>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Item Description:</label>
+            <input type="text" class="form-control" formControlName="itemDescription" #itemDescription>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Message To Recipient:</label>
+            <input type="text" class="form-control" formControlName="messageToRecipient" #messageToRecipient>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Quantity:</label>
+            <input type="text" class="form-control" formControlName="quantity" #quantity>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Source Country:</label>
+            <input type="text" class="form-control" formControlName="sourceCountry" #sourceCountry>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Destination Country:</label>
+            <input type="text" class="form-control" formControlName="destinationCountry" #destinationCountry>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Origin Harbor Location:</label>
+            <input type="text" class="form-control" formControlName="originHarborLocation" #originHarborLocation>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Selected Harbor Locations:</label>
+            <input type="text" class="form-control" formControlName="selectedHarborLocations" #selectedHarborLocations>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>ShippingDate:</label>
+            <input type="date" class="form-control" formControlName="shippingDate" #shippingDate>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <div class="form-group">
+            <label>Amount:</label>
+            <input type="number" class="form-control" formControlName="amount" #amount>
+            <p *ngIf="registerForm.controls['itemType'].errors?.['required']">
+                This field is required!
+            </p>
+        </div>
+        <button
+            (click)="addItem(itemName.value,itemType.value,itemDescription.value,messageToRecipient.value,quantity.value,sourceCountry.value,destinationCountry.value,originHarborLocation.value,selectedHarborLocations.value,shippingDate.value,amount.value)">
+            Submit
+        </button>
+    </form>
+</div>

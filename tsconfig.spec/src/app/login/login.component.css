@@ -1,0 +1,44 @@
+.login-container {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+}
+
+.inner-container {
+    display: flex;
+    align-items: center;
+    padding-right: 0%;
+    margin-top:40px;
+    background-color: rgba(87, 128, 238, 0.603);
+    justify-content: flex-start;
+    min-height: 70vh;
+    width: 80%;
+}
+
+.inner-container img {
+    padding-right: 0%;
+    
+}
+
+.login-form-container {
+    padding-left: 4%;
+    padding-right: 4%;
+    flex: 0.7;
+    
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    margin-left: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.form-heading {
+    margin-bottom: 30px;
+}
+
+.error-message {
+    color: red;
+}
